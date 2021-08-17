@@ -743,7 +743,7 @@ We evaluated the available models on the following datasets:
         Given a document in any of these languages, this framework is able to identify name mentions, assign a 
         coarse-grained or fine-grained type to each mention, and link it to an English Knowledge Base if it is linkable.
         We will evaluate existing ner models using persian subset of this dataset which contains 272266 sentences.
-        In the absence of a test set, we evaluate our models using whole `WikiAnn` dataset.
+        In the absence of a test set, 10% of the original dataset is selected as the test set and the model is evaluated on it.
 - **Arman+Peyma+WikiAnn**:
         A mixed NER dataset collected from ARMAN, PEYMA, and WikiANN that covered ten types of entities: Date (DAT), 
         Event (EVE), Facility (FAC), Location (LOC), Money (MON), Organization (ORG), Percent (PCT), Person (PER), 
@@ -825,7 +825,7 @@ The following table shows the statistics of the entities within this dataset:
 |:------:|:------:|:------:|:------:|:-----:|:------:|:------:|
 | 106811 | 398513 | 136732 | 322138 | 50701 | 113338 | 486529 |
 
-In the following table, we will report evaluation results for `WikiAnn` dataset:
+In the following table, we will report evaluation results for test set of `WikiAnn` dataset:
 
 |  Notebook                                                                                            |  Model Type       |             Model Name                           | Accuracy | Precision (weighted)| Precision (micro)| Precision (macro)| Recall (weighted)| Recall (micro)| Recall (macro)| F1-Score (weighted) | F1-Score (micro) | F1-Score (macro) |
 |:----------------------------------------------------------------------------------------------------:|:-----------------:|:------------------------------------------------:|:--------:|--------------------:|:----------------:|:----------------:|:----------------:|:-------------:|:-------------:|:-------------------:|:----------------:|:----------------:|
