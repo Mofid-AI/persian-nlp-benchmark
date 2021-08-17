@@ -1,0 +1,9 @@
+transformers==4.7.0
+sentencepiece==0.1.96
+sentence-transformers==2.0.0
+datasets==1.9.0
+hazm==0.7.0
+seqeval==1.2.2
+clean-text[gpl]==0.4.0
+sacrebleu==1.5.1
+editdistance==0.5.3
