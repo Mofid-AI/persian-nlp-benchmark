@@ -743,7 +743,7 @@ We evaluated the available models on the following datasets:
         Given a document in any of these languages, this framework is able to identify name mentions, assign a 
         coarse-grained or fine-grained type to each mention, and link it to an English Knowledge Base if it is linkable.
         We will evaluate existing ner models using persian subset of this dataset which contains 272266 sentences.
-        In the absence of a test set, we evaluate our models using whole `WikiAnn` dataset.
+        In the absence of a test set, 10% of the original dataset is selected as the test set and the model is evaluated on it.
 - **Arman+Peyma+WikiAnn**:
         A mixed NER dataset collected from ARMAN, PEYMA, and WikiANN that covered ten types of entities: Date (DAT), 
         Event (EVE), Facility (FAC), Location (LOC), Money (MON), Organization (ORG), Percent (PCT), Person (PER), 
@@ -776,7 +776,7 @@ In the following table, we will report evaluation results for test set of `Peyma
 |[Link](notebooks/named-entity-recognition/NER_m3hrdadfi_albert-fa-base-v2-ner-arman.ipynb)            | ALBERT-fa-base-v2 | m3hrdadfi/albert-fa-base-v2-ner-arman            |  93.238  |       56.118        |      53.779      |      56.072      |      28.130      |     28.130    |     27.014    |       36.186        |      36.938      |      35.229      |
 |[Link](notebooks/named-entity-recognition/NER_HooshvareLab_bert-fa-zwnj-base-ner.ipynb)               | ParsBERT v3.0     | HooshvareLab/bert-fa-zwnj-base-ner               |  95.140  |       65.536        |      65.864      |      63.316      |      56.368      |     56.368    |     53.801    |       60.453        |      60.748      |      57.971      |
 |[Link](notebooks/named-entity-recognition/NER_HooshvareLab_distilbert-fa-zwnj-base-ner.ipynb)         | DistilBERT v3.0   | HooshvareLab/distilbert-fa-zwnj-base-ner         |  94.716  |       64.108        |      63.857      |      67.073      |      51.913      |     51.913    |     49.726    |       57.209        |      57.269      |      56.493      |
-|[Link](notebooks/named-entity-recognition/NER_HooshvareLab_roberta-fa-zwnj-base-ner.ipynb)            | Roberta v3.0      | HooshvareLab/roberta-fa-zwnj-base-ner            |          |                     |                  |                  |                  |               |               |                     |                  |                  |
+|[Link](notebooks/named-entity-recognition/NER_HooshvareLab_roberta-fa-zwnj-base-ner.ipynb)            | Roberta v3.0      | HooshvareLab/roberta-fa-zwnj-base-ner            |  93.946  |       65.378        |      65.332      |      58.294      |      47.792      |     47.792    |     44.810    |       54.596        |      55.202      |      48.377      |
 
 #### Arman
 The following table shows the statistics of the entities within this dataset: 
@@ -799,7 +799,7 @@ In the following table, we will report evaluation results for test set of `Arman
 |[Link](notebooks/named-entity-recognition/NER_m3hrdadfi_albert-fa-base-v2-ner-arman.ipynb)            | ALBERT-fa-base-v2 | m3hrdadfi/albert-fa-base-v2-ner-arman            |  93.631  |       61.832        |      62.547      |       52.273     |      28.587      |     28.587    |     22.760    |       38.645        |      39.239      |      31.064      |
 |[Link](notebooks/named-entity-recognition/NER_HooshvareLab_bert-fa-zwnj-base-ner.ipynb)               | ParsBERT v3.0     | HooshvareLab/bert-fa-zwnj-base-ner               |  92.640  |       54.481        |      32.944      |       45.902     |      51.236      |     51.236    |     47.538    |       50.872        |      40.102      |      41.875      |
 |[Link](notebooks/named-entity-recognition/NER_HooshvareLab_distilbert-fa-zwnj-base-ner.ipynb)         | DistilBERT v3.0   | HooshvareLab/distilbert-fa-zwnj-base-ner         |  96.586  |       62.768        |      62.479      |       57.043     |      53.755      |     53.755    |     48.977    |       57.665        |      57.790      |      51.919      |
-|[Link](notebooks/named-entity-recognition/NER_HooshvareLab_roberta-fa-zwnj-base-ner.ipynb)            | Roberta v3.0      | HooshvareLab/roberta-fa-zwnj-base-ner            |          |                     |                  |                  |                  |               |               |                     |                  |                  |
+|[Link](notebooks/named-entity-recognition/NER_HooshvareLab_roberta-fa-zwnj-base-ner.ipynb)            | Roberta v3.0      | HooshvareLab/roberta-fa-zwnj-base-ner            |  94.363  |       60.152        |      41.597      |       44.543     |      52.769      |     52.769    |     51.193    |       54.548        |      46.522      |      42.800      |
 
 #### Peyma+Arman
 In the following table, we will report evaluation results for combination of test sets of `Peyma` and `Arman` datasets:
@@ -816,7 +816,7 @@ In the following table, we will report evaluation results for combination of tes
 |[Link](notebooks/named-entity-recognition/NER_m3hrdadfi_albert-fa-base-v2-ner-arman.ipynb)            | ALBERT-fa-base-v2 | m3hrdadfi/albert-fa-base-v2-ner-arman            |  93.522  |       61.240        |      61.424      |       50.900     |      28.299      |     28.299    |     22.403    |       38.197        |      38.747      |      30.426      |
 |[Link](notebooks/named-entity-recognition/NER_HooshvareLab_bert-fa-zwnj-base-ner.ipynb)               | ParsBERT v3.0     | HooshvareLab/bert-fa-zwnj-base-ner               |  92.626  |       54.540        |      34.243      |       42.270     |      51.619      |     51.619    |     50.075    |       51.273        |      41.173      |      42.135      |
 |[Link](notebooks/named-entity-recognition/NER_HooshvareLab_distilbert-fa-zwnj-base-ner.ipynb)         | DistilBERT v3.0   | HooshvareLab/distilbert-fa-zwnj-base-ner         |  96.289  |       62.214        |      61.895      |       56.616     |      53.016      |     53.016    |     45.599    |       57.009        |      57.112      |      49.725      |
-|[Link](notebooks/named-entity-recognition/NER_HooshvareLab_roberta-fa-zwnj-base-ner.ipynb)            | Roberta v3.0      | HooshvareLab/roberta-fa-zwnj-base-ner            |          |                     |                  |                  |                  |               |               |                     |                  |                  |
+|[Link](notebooks/named-entity-recognition/NER_HooshvareLab_roberta-fa-zwnj-base-ner.ipynb)            | Roberta v3.0      | HooshvareLab/roberta-fa-zwnj-base-ner            |  93.937  |       60.050        |      40.726      |       41.719     |      50.814      |     50.814    |     42.826    |       53.318        |      45.214      |      34.298      |
 
 #### WikiAnn
 The following table shows the statistics of the entities within this dataset: 
@@ -825,7 +825,7 @@ The following table shows the statistics of the entities within this dataset:
 |:------:|:------:|:------:|:------:|:-----:|:------:|:------:|
 | 106811 | 398513 | 136732 | 322138 | 50701 | 113338 | 486529 |
 
-In the following table, we will report evaluation results for `WikiAnn` dataset:
+In the following table, we will report evaluation results for test set of `WikiAnn` dataset:
 
 |  Notebook                                                                                            |  Model Type       |             Model Name                           | Accuracy | Precision (weighted)| Precision (micro)| Precision (macro)| Recall (weighted)| Recall (micro)| Recall (macro)| F1-Score (weighted) | F1-Score (micro) | F1-Score (macro) |
 |:----------------------------------------------------------------------------------------------------:|:-----------------:|:------------------------------------------------:|:--------:|--------------------:|:----------------:|:----------------:|:----------------:|:-------------:|:-------------:|:-------------------:|:----------------:|:----------------:|
@@ -839,7 +839,7 @@ In the following table, we will report evaluation results for `WikiAnn` dataset:
 |[Link](notebooks/named-entity-recognition/NER_m3hrdadfi_albert-fa-base-v2-ner-arman.ipynb)            | ALBERT-fa-base-v2 | m3hrdadfi/albert-fa-base-v2-ner-arman            |  34.697  |       34.080        |      33.017      |       32.992     |       1.233      |      1.233    |      1.227    |        2.368        |       2.376      |       2.355      |
 |[Link](notebooks/named-entity-recognition/NER_HooshvareLab_bert-fa-zwnj-base-ner.ipynb)               | ParsBERT v3.0     | HooshvareLab/bert-fa-zwnj-base-ner               |  51.810  |       17.916        |      15.502      |       17.965     |      17.655      |     17.655    |     20.397    |       17.253        |      16.508      |      18.165      |
 |[Link](notebooks/named-entity-recognition/NER_HooshvareLab_distilbert-fa-zwnj-base-ner.ipynb)         | DistilBERT v3.0   | HooshvareLab/distilbert-fa-zwnj-base-ner         |  52.514  |       23.359        |      14.692      |       24.128     |      14.413      |     14.413    |     18.803    |       16.053        |      14.551      |      17.874      |
-|[Link](notebooks/named-entity-recognition/NER_HooshvareLab_roberta-fa-zwnj-base-ner.ipynb)            | Roberta v3.0      | HooshvareLab/roberta-fa-zwnj-base-ner            |          |                     |                  |                  |                  |               |               |                     |                  |                  |
+|[Link](notebooks/named-entity-recognition/NER_HooshvareLab_roberta-fa-zwnj-base-ner.ipynb)            | Roberta v3.0      | HooshvareLab/roberta-fa-zwnj-base-ner            |  40.433  |       24.989        |      12.970      |       19.064     |       2.880      |      2.880    |      3.177    |        4.756        |       4.714      |       4.830      |
 
 #### Arman+Peyma+WikiAnn
 The following table shows the statistics of the entities within this dataset: 
@@ -862,7 +862,7 @@ In the following table, we will report evaluation results for test set of combin
 |[Link](notebooks/named-entity-recognition/NER_m3hrdadfi_albert-fa-base-v2-ner-arman.ipynb)            | ALBERT-fa-base-v2 | m3hrdadfi/albert-fa-base-v2-ner-arman            |  93.672  |       57.996        |      55.165      |       43.243     |      26.513      |     26.513    |     19.825    |       35.742        |      35.814      |      26.471      |
 |[Link](notebooks/named-entity-recognition/NER_HooshvareLab_bert-fa-zwnj-base-ner.ipynb)               | ParsBERT v3.0     | HooshvareLab/bert-fa-zwnj-base-ner               |  90.795  |       57.248        |      27.097      |       45.379     |      50.548      |     50.548    |     47.709    |       52.321        |      35.281      |      43.328      |
 |[Link](notebooks/named-entity-recognition/NER_HooshvareLab_distilbert-fa-zwnj-base-ner.ipynb)         | DistilBERT v3.0   | HooshvareLab/distilbert-fa-zwnj-base-ner         |  95.779  |       60.292        |      59.931      |       55.099     |      49.280      |     49.280    |     41.171    |       53.855        |      54.086      |      45.728      |
-|[Link](notebooks/named-entity-recognition/NER_HooshvareLab_roberta-fa-zwnj-base-ner.ipynb)            | Roberta v3.0      | HooshvareLab/roberta-fa-zwnj-base-ner            |          |                     |                  |                  |                  |               |               |                     |                  |                  |					
+|[Link](notebooks/named-entity-recognition/NER_HooshvareLab_roberta-fa-zwnj-base-ner.ipynb)            | Roberta v3.0      | HooshvareLab/roberta-fa-zwnj-base-ner            |  91.239  |       56.233        |      26.904      |       40.498     |      43.191      |     43.191    |     40.046    |       46.842        |      33.156      |      33.375      |
 
 #### Evaluation based on each entity 
 In [result file](evaluation-results/named-entity-recognition.xlsx), we reports the results of evaluating each model.

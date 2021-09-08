@@ -12,6 +12,7 @@ import torch.nn.functional as F
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
 
 import transformers
+from tokenizers.decoders import ByteLevel
 from transformers import AutoTokenizer, AutoConfig
 from transformers import AutoModelForTokenClassification
 
@@ -156,6 +157,39 @@ class NER:
             output_predictions.append(predictions)
         return output_predictions
 
+    def roberta_ner_inference(self, input_text, device, max_length):
+        if not self.model or not self.tokenizer or not self.id2label:
+            print('Something wrong has been happened!')
+            return
+
+        byte_level_decoder = ByteLevel()
+        pt_batch = self.tokenizer(
+            [self.normalizer.normalize(sequence) for sequence in input_text],
+            padding=True,
+            truncation=True,
+            max_length=max_length,
+            return_tensors="pt"
+        )
+
+        gc.collect()
+        torch.cuda.empty_cache()
+        # Tell pytorch to run this model on the GPU.
+        if device.type != 'cpu':
+            self.model.cuda()
+
+        pt_batch = pt_batch.to(device)
+        pt_outputs = self.model(**pt_batch)
+        pt_predictions = torch.argmax(pt_outputs.logits, dim=-1)
+        pt_predictions = pt_predictions.cpu().detach().numpy().tolist()
+
+        output_predictions = []
+        for i, sequence in enumerate(input_text):
+            tokens = self.tokenizer.tokenize(self.tokenizer.decode(self.tokenizer.encode(sequence)))
+            predictions = [(byte_level_decoder.decode(token), self.id2label[prediction]) for token, prediction in
+                           zip(tokens, pt_predictions[i])]
+            output_predictions.append(predictions)
+        return output_predictions
+
     def ner_evaluation(self, input_text, input_labels, device, batch_size=4):
         if not self.model or not self.tokenizer or not self.id2label:
             print('Something wrong has been happened!')
@@ -251,7 +285,7 @@ class NER:
 
         return output_predictions
 
-    def ner_evaluation_2(self, input_text, input_labels, device, batch_size=4):
+    def ner_evaluation_2(self, input_text, input_labels, device, max_position_embeddings=None, batch_size=4):
         if not self.model or not self.tokenizer or not self.id2label:
             print('Something wrong has been happened!')
             return
@@ -281,7 +315,10 @@ class NER:
             c += 1
             if c % 10000 == 0:
                 print("c:", c)
-        max_len = min(max_len, self.config.max_position_embeddings)
+        if max_position_embeddings is None:
+            max_len = min(max_len, self.config.max_position_embeddings)
+        else:
+            max_len = min(max_len, max_position_embeddings)
         print("max_len:", max_len)
         input_ids = pad_sequences(tokenized_texts, maxlen=max_len, dtype="long", value=self.config.pad_token_id,
                                   truncating="post", padding="post")
